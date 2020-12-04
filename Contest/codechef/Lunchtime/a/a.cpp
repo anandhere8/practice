@@ -1,47 +1,76 @@
 #include<bits/stdc++.h>
 
-using namespace std;
+#define EB emplace_back
+#define int long long
+#define F first
+#define S second
+#define all(x) x.begin(),x.end()
+#define endl '\n'
+#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
 
-void test_cases(){
-  int n, q; 
-  scanf("%d", &n);
-  scanf("%d", &q);
-  int A[n + 1];
-  long long sum = 1;
+using namespace std;
+using pii = pair < int, int >;
+
+void test_case(){
+  int n;
+  cin >> n;
+  vector < vector < int >> A(n), tmp;
   for(int i = 0; i < n; i++){
-    scanf("%d", A + i);
+    A[i].resize(2);
+    cin >> A[i][0];
   }
-  for(int i = 1; i < n; i++){
-    if(A[i] != A[i - 1]){
-      sum++;
+  for(int i = 0; i < n; i++){
+    cin >> A[i][1];
+  }
+  tmp = A;
+  int ans = LLONG_MAX;
+
+  for(int i = 0; i < n; i++){
+    bool ok = true;
+    priority_queue < pii, vector<pii>, greater<pii> > pq; 
+    int sum = 0;
+    A = tmp;
+    for(int j = i; j < n; j++){
+      pq.push({A[j][1], j});
+      while((int)pq.size() && A[pq.top().S][0] == 0){
+        pq.pop();
+      }
+      if((int)pq.size() == 0){
+        //cerr << i << " " << j << endl;
+        ok = false;
+        break;
+      }
+      A[pq.top().S][0]--;
+      //cerr << pq.top().F << " ";
+      sum += pq.top().F;
     }
-  }
-  while(q--){
-    int x, val;
-    scanf("%d%d", &x, &val);
-    x--;
-    int stb, sta;
-    if(A[x] == val){
+    for(int j = 0; j < i; j++){
+      pq.push({A[j][1], j});
+      while((int)pq.size() && A[pq.top().S][0] == 0){
+        pq.pop();
+      }
+      if((int)pq.size() == 0){
+        //cerr << i << " " << j << endl;
+        ok = false;
+        break;
+      }
+      A[pq.top().S][0]--;
+      //cerr << pq.top().F << " ";
+      sum += pq.top().F;
     }
-    else{
-      sta = 0, stb = 0;
-      if(x > 0 && A[x] != A[x - 1]) stb++;
-      if(x < n && A[x] != A[x + 1]) stb++;
-      A[x] = val;
-      if(x > 0 && A[x] != A[x - 1]) sta++;
-      if(x < n && A[x] != A[x + 1]) sta++;
-      sum += sta - stb;
-    }         
-    printf("%lld\n", sum);
+    //cerr << i << " " << sum << " " << ok << endl;
+    if(ok) ans = min(ans, sum);
   }
+  cout << ans;
 }
 
-int main(){
+int32_t main(){
+  IOS;
   int tt = 1; 
-  scanf("%d", &tt);
+  cin >> tt;
   while(tt--){
-    test_cases();
-    //puts("");
+    test_case();
+    cout << endl;
   }
   return 0;
 }

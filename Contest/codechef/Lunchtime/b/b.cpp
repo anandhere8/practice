@@ -1,51 +1,43 @@
-#include<bits/stdc++.h>
-#define int long long
+#include <iostream>
+#include <cassert>
+#include <algorithm>
 using namespace std;
-
-void test_cases(){
-  int n;
-  scanf("%lld", &n);
-  int A[n + 1];
-  map < int, int > mp;
-  for(int i = 1; i <= n; i++){
-    scanf("%lld", A + i);
-  }
-  
-  for(int i = 1; i <= n; i++){
-    int x = A[i];
-    for(int j = 2; j * j <= x; j++){
-      if(x % j == 0){
-        mp[j] = max(i, mp[j]);
-        while(x % j == 0){
-          x /= j;
-        }         
-      }
-    }
-    if(x > 1) mp[x] = max(mp[x], i);
-  }
-  int ans = 1;
-  for(int i = 1; i <= n; i++){
-    int x = A[i];
-    for(int j = 2; j * j <= x; j++){
-      if(x % j == 0){
-        ans = max(ans, mp[j]);
-        while(x % j == 0) x /= j;
-      }
-    }
-    if(x > 1){
-      ans = max(ans, mp[x]);
-    }
-    if(ans == i) break;
-  } 
-  printf("%lld", ans);
-}
-
-int32_t main(){
-  int tt = 1; 
-  scanf("%lld", &tt);
+#pragma GCC target ("avx2")
+#pragma GCC optimization ("O3")
+#pragma GCC optimization ("unroll-loops")
+#define endl '\n'
+#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+int main(){
+  IOS;
+  int tt = 1;//  cin >> tt;
   while(tt--){
-    test_cases();
-    puts("");
+    int n; cin >> n;
+    int ans = 0;
+    //int mx = 0;
+    for(int i = 1; i <= n; i++){
+      for(int j = i + 1; j <= min(i + 2005, n); j++){
+        int num = i * j + i;
+        int dem = i * j + j;
+        int g = __gcd(num, dem);
+        num /= g, dem /= g;
+        if(num == dem - 1) {
+          //cerr << i << " " << j << endl;
+          ans++;
+        }
+      }
+      for(int j = n; j > i + 2005; j--){
+        int num = i * j + i;
+        int dem = i * j + j;
+        int g = __gcd(num, dem);
+        num /= g, dem /= g;
+        if(num == dem - 1) {
+          //cerr << i << " " << j << endl;
+          ans++;
+        }
+      }
+    }
+    //cerr << mx  << endl;
+    cout << ans;
   }
   return 0;
 }

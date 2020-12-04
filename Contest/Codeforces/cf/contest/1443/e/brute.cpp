@@ -7,7 +7,10 @@ int main(){
   cin >> n;
   int A[n];
   iota(A, A + n, 1);
+  int cnt = 0;
   do{
+    cnt %= (n * (n - 1)) / 2;
+    cout << cnt++ << " : ";
     for(int i : A){
       cout << i << " ";
     }

@@ -1,0 +1,42 @@
+<h2>Problem Description</h2>
+
+<p>After arranging several movie going events, each fullfilling some seating constraints,<br>
+you realized that in some weeks, the seating arrangements that you made look very similar :O.</p>
+
+<p>For example:<br>
+Last week, your group with <b>N</b> = 8 movie goers seat in this order: {1, 2, 3, 4, 5, 6, 7, 8}.<br>
+This week, your group with <b>M</b> = 9 movie goers seat in this order: {1, 2, 4, 3, 5, 6, 7, 8, 9}.<br>
+You have just studied the "Longest Common Subsequence" (LCS) problem few weeks ago and realized that the LCS between the two seating arrangements above is 7, very close to <b>N</b> = 8 and <b>M</b> = 9.</p>
+
+<p>This is interesting, so you want to compare several seating arrangements that you have made in the past<br>
+to see if you have any specific pattern in arranging the seating plan of your movie going group.</p>
+
+<h2>Input</h2>
+
+<p>For each testcase, the first line contains two integers <b>N</b> and <b>M</b> (1 <= <b>N, M</b> <= 50000).<br>
+The second line contains <b>N</b> different integers in the range <b>[1 .. N]</b>.<br>
+The third line contains <b>M</b> different integers in the range <b>[1 .. M]</b>.</p>
+
+<h2>Output</h2>
+		
+<p>For each test case, print the case number and the answer.<br>
+Look at the output for sample input for details.</p>
+
+<h2>Sample Input 1</h2>
+<pre>
+8 9
+1 2 3 4 5 6 7 8
+1 2 4 3 5 6 7 8 9
+</pre>
+<h2>Sample Output 1</h2>
+<pre>7</pre>
+<h2>Sample Input 2</h2>
+<pre>
+8 9
+1 2 3 4 5 6 7 8
+1 2 4 3 5 6 9 7 8
+</pre>
+<h2>Sample Output 2</h2>
+<pre>7</pre>
+<h2>Acknowledgements</h2>
+<p>This problem is from CS3233 2011 Team Contest 2 Problem B. (which is modified from UVa 10635).</p>

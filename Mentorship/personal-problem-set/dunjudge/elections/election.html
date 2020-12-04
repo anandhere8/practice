@@ -1,0 +1,36 @@
+<h2>Problem Description</h2>
+<p>
+	In order to combat potato cruelty in Potatoland, Jiahai is running for election. Jiahai has one competitor, Guan, who is trying to win the election as well. Potatoland consists of a series of <i>N</i> small houses on a straight main road, numbered from 0 to <i>N</i>-1. Before the election, Jiahai has already conducted polls and has found out who each house will vote for.
+</p>
+<p>
+	However, here is the problem. The electorial system is really stupid, and it allows Jiahai to split this road up into segments of at least length <i>L</i> where each segment constitutes an "electorial division". Each electorial division will cast one electorial vote based on its majority. (If Jiahai wins exactly half, Guan has the majority) Jiahai wants to maximise his winning margin, which is defined as (number of electorial votes cast for Jiahai) - (number of electorial votes cast for Guan). Help Jiahai find out what is the maximum possible winning margin. (It can be negative, if Jiahai is sure to lose.)
+</p>
+
+<h2>Input</h2>
+The first line of input will contain two integers, <i>N</i> and <i>L</i>.<br>
+The second line of input will contain <i>N</i> characters, each of them either 'J' or 'G', depending on who the house will vote for.
+
+<h2>Output</h2>
+The output should contain one line with one integer only, representing Jiahai's maximum winning margin.
+
+<H2>Limits</H2>
+Subtask 1 (11%): 1 &le; N, L &le; 20.<br>
+Subtask 2 (21%): 1 &le; N, L &le; 3 000.<br>
+Subtask 3 (31%): 1 &le; N &le; 300 000. L = 1.<br>
+Subtask 4 (37%): 1 &le; N, L &le; 300 000.<br>
+Subtask 5 (0%): Sample testcases.
+
+<h2>Sample Input 1</h2>
+<pre>8 3
+JGJGGGGJ</pre>
+
+<h2>Sample Output 1</h2>
+<pre>0</pre>
+
+<h2>Sample Input 2</h2>
+<pre>13 3
+JJGGJJGGGGJJJ
+</pre>
+
+<h2>Sample Output 2</h2>
+<pre>2</pre>
