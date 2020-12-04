@@ -1,0 +1,43 @@
+<h2>Problem Description</h2>
+<p>
+Did you know that the universe is actually in a rooted tree? Well maybe not, but that is certainly true in Gug's universe. In other words, there are <i>N</i> planets in Gug's universe, with <i>N-1</i> bidirectional edges bettween planets so that there is exactly 1 path between any two planets via the edges. Each edge <i>i</i> connects planet <i>X<sub>i</sub></i> and <i>Y<sub>i</sub></i>.
+</p>
+<p>
+Gug's house is at planet 1. Gug thinks he is the center of the universe so the tree will be rooted at planet 1. In gug's universe, leaf planets contain restaurants. A rooted tree is a tree with a special vertex called root. In a rooted tree among any two vertices connected by an edge, one vertex is a parent (the one closer to the root), and the other one is a child. A vertex is called a leaf, if it has no children.
+</p>
+<p>Gug wants to visit the restaurants in his universe. Unfortunately for Gug, some planets have cats, while some do not. Gug does not like cats, so he will not go to a restaurant if the direct path from his house to that restaurant passes through more than <i>K</i> planets with cats consecutively. Gug wants to know how many restaurants he will be able to visit.
+</p>
+<h2>Input</h2>
+<p>The first line of input will contain <i>2</i> integers, <i>N</i>, <i>K</i>- the number of planets of the tree and the maximum number of consecutive planets with cats that is still ok for Gug.</p>
+<p>The second line contains <i>N</i> integers <i>A<sub>1</sub>, A<sub>2</sub>, ..., A<sub>n<sub></i>, where each <i>Ai</i> either equals to 0 (then vertex <i>i</i> has no cat), or equals to 1 (then vertex <i>i</i> has a cat).</p>
+<p>The next <i>N-1</i> lines of input will contain two integers each, <i>X<sub>i</sub></i>, <i>Y<sub>i</sub></i>- the edges in Gug's universe.
+<h2>Output</h2>
+<p>The output should contain one integer representing the number of restaurants Gug can visit.</p>
+<h2>Limits</h2>
+<p>For all subtasks: 1 &le; X<sub>i</sub>, Y<sub>i</sub> &le; N, 0 &le; A<sub>i</sub> &le; 1
+<p>Subtask 1 (49%): 1 &le; N &le; 10<sup>5</sup>, K = 1.</p>
+<p>Subtask 2 (51%): 1 &le; N &le; 10<sup>5</sup>.</p>
+<p>Subtask 3 (0%): Sample Testcases.</p>
+<h2>Sample Input 1</h2>
+<pre>4 1
+1 1 0 0
+1 2
+1 3
+1 4</pre>
+<h2>Sample Output 1</h2>
+<pre>2</pre>
+<h2>Explanation</h2>
+The restaurants are at planets 2, 3, 4. Gug can't go to the restaurant located at planet 2.
+<h2>Sample Input 2</h2>
+<pre>7 1
+1 0 1 1 0 0 0
+1 2
+1 3
+2 4
+2 5
+3 6
+3 7</pre>
+<h2>Sample Output 2</h2>
+<pre>2</pre>
+<h2>Explanation</h2>
+The restaurants are at planets 4, 5, 6, 7. Gug can't go to restaurants at 6, 7.
