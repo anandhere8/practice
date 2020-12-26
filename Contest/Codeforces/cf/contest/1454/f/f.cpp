@@ -1,50 +1,58 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
-#pragma GCC target ("avx2")
-#pragma GCC optimization ("O3")
-#pragma GCC optimization ("unroll-loops")
-#define endl '\n'
-#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+
+template<class T, class U> T &cmax(T &x, U &y) {return x = max<T>(x, y);}
+
 int main(){
-  IOS;
-  int tt; cin >> tt;
-  while(tt--){
-    int n; cin >> n;
-    int A[n], P[n], S[n + 1];
-    for(int i = 0; i < n; i++){
+  auto test = [&](){
+    int n;
+    cin >> n;
+    vector < int > A(n + 2), left(n + 2), right(n + 2), premax(n + 2), postmax(n + 2);
+    A[0] = -1, A[n + 1] = -1;
+    map<int, vector<int>> mp;
+    stack<int> stkl, stkr;
+    stkl.push(0), stkr.push(n + 1);
+    for(auto i = 1; i < n + 1; ++ i){
       cin >> A[i];
-      P[i] = A[i];
-      S[i] = A[i];
-      if(i > 0){
-        P[i] = max(P[i - 1], P[i]);
+      mp[A[i]].emplace_back(i);
+      premax[i] = A[i];
+      postmax[i] = A[i];
+      while(A[stkl.top()] >= A[i]) stkl.pop();
+      left[i] = stkl.top();
+      stkl.push(i);
+      cmax(premax[i], premax[i - 1]);
+    }
+    
+    for(auto i = n; i > 0; -- i){
+      cmax(postmax[i], postmax[i + 1]);
+      while(A[stkr.top()] >= A[i]) stkr.pop();
+      right[i] = stkr.top();
+      stkr.push(i);
+    }
+    static int dx[] = {1, 0};
+    static int dy[] = {0, -1};
+    for(auto i = 2; i < n; ++ i){
+      for(auto j = 0; j < 2; j++){
+        for(auto k = 0; k < 2; k++){
+          int l = left[i], r = right[i];
+          l += dx[j], r += dy[k];
+          if(l >= i || r <= i) continue;
+          if(premax[l] == postmax[r] && premax[l] == A[i]){
+            cout << "YES " << endl;
+            cout << l << " " << r - l - 1 << " " << n - r + 1;
+            return ;
+          }
+        }
       }
     }
-    for(int i = n - 2; i >= 0; i--){
-      S[i] = max(S[i], S[i + 1]);
-    }
-    bool ok = false;
-    for(int i = 0; i < n - 2; i++){
-      int mn = 1e9 + 2;
-      int cnt = 0;
-      for(int j = i + 1; j < n - 1; j++, cnt++){
-        mn = min(mn, A[j]);
-        if(mn == P[i] && mn == S[j + 1]){
-          cout << "YES" << endl;
-          cout << i + 1 << " " << cnt + 1 << " " << n - i - 1 - cnt - 1 << endl;
-          ok = true;
-          break;
-        }
-        if(mn < P[i]) {
-          i = j;
-          break;
-        }
-        if(ok) break;
-      }
-      if(ok) break;
-    }
-    if(!ok)
-      cout << "NO" << endl;
+    cout << "NO" << endl;
+  };
+  int tt;
+  cin >> tt;
+  while(tt--){
+    test();
+    cout << endl;
   }
   return 0;
 }
-    

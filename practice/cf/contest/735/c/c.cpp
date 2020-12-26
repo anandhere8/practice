@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 int main(){
   long long a = 1, b = 1, c = 2, n, ans = 0;
   scanf("%lld", &n);

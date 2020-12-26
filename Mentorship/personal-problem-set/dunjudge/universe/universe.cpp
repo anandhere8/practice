@@ -19,7 +19,7 @@ void dfs(int s,int p = -1){
 	for(auto x : G[s]){
 		if(!ok[x]){
       dist[x] = 1 + dist[s];
-      if(cat[x] || cat[s] > m){
+      if(cat[x] || (cat[s] > m)){
         cat[x] = 1 + cat[s];
       }
 			dfs(x,s);

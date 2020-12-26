@@ -1,0 +1,41 @@
+<h2>Problem Description</h2>
+<p>
+	Peanut is helping Rar the Cat catch some mice in Cat-town. Cat-town can be modelled as a series of <i>N</i> nodes and <i>E</i> edges where each node represents a Mouse-house containing some number of mice <i>M<sub>i</sub></i>, and each edge represents a one-way conveyor belt Peanut can travel on (he is very lazy, so he can't walk). When Peanut reaches a Mouse-house with a certain number of mice, he can catch all the mice in the Mouse-house, and the Mouse-house would become empty. Peanut begins at node 0. Help Peanut find out what is the maximum number of mice he can catch.
+</p>
+
+<h2>Input</h2>
+<p>
+	The first line of input will contain two integers, <i>N</i> and <i>E</i>.<br>
+	The second line of input will contain <i>N</i> integers, with the <i>i</i>th integer representing the number of mice in the Mouse-house at node <i>i</i>.<br>
+	The next <i>E</i> lines of input will contain two integers each, with each line representing the two nodes the edge connects.
+</p>
+
+<h2>Output</h2>
+<p>
+	The output should contain one line containing one integer, the maximum number of mice Peanut can catch.
+</p>
+
+<h2>Limits</h2>
+All Mouse-houses will have less than 1 000 mice.<br>
+Subtask 1 (17%): 1 &le; N, E &le; 100.<br>
+Subtask 2 (21%): 1 &le; N, E &le; 3 000.<br>
+Subtask 3 (23%): 1 &le; N, E &le; 100 000. If there is a path from node X to node Y, there will not be a path from node Y to node X.<br>
+Subtask 4 (39%): 1 &le; N &le; 100 000. 1 &le; E &le; 500 000.<br>
+Subtask 5 (0%): Sample testcases.
+
+<h2>Sample Input 1</h2>
+<pre>7 10
+6 3 5 7 8 2 2
+0 1
+2 0
+1 4
+1 3
+2 6
+2 4
+2 5
+5 4
+6 1
+3 6</pre>
+
+<h2>Sample Output 1</h2>
+<pre>26</pre>
